@@ -2,12 +2,12 @@ create table publisher
   (email_address   varchar(30),
    street_name   varchar(20),
    street_number   numeric(4, 0),
-   apt_number   varchar(4, 0),
+   apt_number   numeric(4, 0),
    city   varchar(20),
    publisher_state   varchar(20),
    phone_number   varchar(14),
-   bank_account   varchar(15)
-   primary key (email_address, bank_account)
+   bank_account   varchar(15),
+   primary key (email_address)
   );
 
 create table book
@@ -19,14 +19,14 @@ create table book
    quantity   numeric(3, 0) not null check (quantity > -1),
    price   numeric(5, 2) not null,
    percent_to_publisher   numeric(2, 0) not null,
-   primary key (isbn)
+   primary key (isbn),
    foreign key (publisher) references publisher
   );
 
- create table customer
+create table customer
   (email_address   varchar(30),
-   first_name   varchar(20),
-   last_name   varchar(20),
-   password   varchar(128),
+   first_name   varchar(20) not null,
+   last_name   varchar(20) not null,
+   password   varchar(128) not null,
    primary key (email_address)
   );
