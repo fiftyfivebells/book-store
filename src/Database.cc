@@ -17,3 +17,39 @@ result Database::executeQuery(string &query) {
 
   return result(n.exec(query));
 }
+
+result Database::queryBookTitle(string &searchTerm) {
+  nontransaction n(conn);
+
+  string query = "select * from book natural join author where title ilike '%" +
+                 searchTerm + "%'";
+
+  return result(n.exec(query));
+}
+
+result Database::queryBookGenre(string &searchTerm) {
+  nontransaction n(conn);
+
+  string query = "select * from book natural join genre where genre ilike '%" +
+                 searchTerm + "%'";
+
+  return result(n.exec(query));
+}
+
+result Database::queryBookPublisher(string &searchTerm) {
+  nontransaction n(conn);
+
+  string query = "select * from book where publisher ilike '%" +
+                 searchTerm + "%'";
+
+  return result(n.exec(query));
+}
+
+result Database::queryBookAuthor(string &searchTerm) {
+  nontransaction n(conn);
+
+  string query = "select * from book natural join author where author ilike '%" +
+                 searchTerm + "%'";
+
+  return result(n.exec(query));
+}
