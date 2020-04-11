@@ -3,6 +3,24 @@
 
 using namespace std;
 
+void View::selectMenu(int &choice) {
+  cout << endl << endl;
+  cout << "Are you a customer or an owner? Select below: " << endl;
+  cout << "  (1) Customer" << endl;
+  cout << "  (2) Owner" << endl;
+  cout << "  (0) Exit" << endl << endl;
+
+  cout << "Enter your selection: ";
+  cin >> choice;
+
+  if (choice == 0) return;
+
+  while (choice < 0 || choice > 2) {
+    cout << "Enter your selection: ";
+    cin >> choice;
+  }
+}
+
 void View::showCustomerMenu(int &choice) {
   cout << endl << endl;
   cout << "Select an option: " << endl;
@@ -10,7 +28,7 @@ void View::showCustomerMenu(int &choice) {
   cout << "  (2) Look at cart" << endl;
   cout << "  (0) Exit" << endl << endl;
 
-  cout << "Enter your selectio: ";
+  cout << "Enter your selection: ";
   cin >> choice;
   if (choice == 0) return;
 
@@ -28,7 +46,7 @@ void View::showOwnerMenu(int &choice) {
   cout << "  (3) Create an expense" << endl;
   cout << "  (0) Exit" << endl << endl;
 
-  cout << "Enter your selectio: ";
+  cout << "Enter your selection: ";
   cin >> choice;
   if (choice == 0) return;
 
