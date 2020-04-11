@@ -1,5 +1,7 @@
 #include "../include/View.h"
 #include <iostream>
+#include <limits>
+#include <string>
 
 using namespace std;
 
@@ -54,6 +56,13 @@ void View::showOwnerMenu(int &choice) {
     cout << "Enter your selection: ";
     cin >> choice;
   }
+}
+
+
+void View::readLine(string &str) {
+  cin.clear();
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  getline(cin, str);
 }
 
 void View::printStr(string str) { cout << str; }
