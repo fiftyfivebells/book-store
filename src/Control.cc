@@ -5,6 +5,8 @@
 
 using namespace std;
 
+Control::Control() noexcept : db("3005 project", "stephen", "supersecret", "127.0.0.1", "5432") {}
+
 void Control::launch() {
   int choice, owner;
 
