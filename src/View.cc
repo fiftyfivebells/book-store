@@ -58,6 +58,24 @@ void View::showOwnerMenu(int &choice) {
   }
 }
 
+void View::bookSearchMenu(int &choice) {
+  cout << "What would you like to search by?" << endl;
+  cout << "  (1) Title" << endl;
+  cout << "  (2) Author" << endl;
+  cout << "  (3) Genre" << endl;
+  cout << "  (4) Publisher" << endl;
+
+  cout << "  (0) Back to previous menu" << endl << endl;
+
+  cout << "Enter your selection: ";
+  cin >> choice;
+  if (choice == 0) return;
+
+  while (choice < 0 || choice > 4) {
+    cout << "Enter your selection: ";
+    cin >> choice;
+  }
+}
 
 void View::readLine(string &str) {
   cin.clear();
