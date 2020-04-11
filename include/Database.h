@@ -9,7 +9,7 @@ using namespace pqxx;
 
 class Database {
  public:
-  Database(string&, string&, string&, string&, string&);
+  Database(string, string, string, string, string);
   ~Database();
   result executeQuery(string&);
 
