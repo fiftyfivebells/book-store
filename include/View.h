@@ -11,6 +11,7 @@ class View {
   void showOwnerMenu(int&);
   void readInt(int&);
   void readStr(string&);
+  void printStr(string);
 };
 
 #endif
