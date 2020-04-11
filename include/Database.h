@@ -12,6 +12,10 @@ class Database {
   Database(string, string, string, string, string);
   ~Database();
   result executeQuery(string&);
+  result queryBookAuthor(string&);
+  result queryBookTitle(string&);
+  result queryBookPublisher(string&);
+  result queryBookGenre(string&);
 
  private:
   connection conn;
