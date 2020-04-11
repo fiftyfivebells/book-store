@@ -88,3 +88,9 @@ void View::printStr(string str) { cout << str; }
 void View::readStr(string &str) { cin >> str; }
 
 void View::readInt(int &n) { cin >> n; }
+
+void View::clearScreen() {
+  printStr("\033[2J");
+  printStr("\033[1;1H");
+}
+
