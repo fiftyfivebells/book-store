@@ -94,3 +94,18 @@ void View::clearScreen() {
   printStr("\033[1;1H");
 }
 
+void View::afterSearch(int &choice) {
+  printStr("What would you like to do?");
+  printStr("  (1) Purchase one of selection");
+  printStr("  (2) Search again");
+  printStr("Enter your selection:");
+
+  cin >> choice;
+
+  if (choice == 2) return;
+
+  while (choice < 1 || choice > 2) {
+    printStr("Enter your selection:");
+    cin >> choice;
+  }
+}
