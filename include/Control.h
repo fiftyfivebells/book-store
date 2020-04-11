@@ -1,6 +1,7 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
+#include "Database.h"
 #include "View.h"
 
 class Control {
@@ -9,6 +10,7 @@ class Control {
 
  private:
   View view;
+  Database db;
 };
 
 #endif
