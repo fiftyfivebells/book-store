@@ -6,6 +6,7 @@
 
 class Control {
  public:
+  Control() noexcept;
   void launch();
 
  private:
