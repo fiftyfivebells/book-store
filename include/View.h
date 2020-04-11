@@ -12,7 +12,11 @@ class View {
   void showOwnerMenu(int&);
   void readInt(int&);
   void readStr(string&);
+  void readLine(string&);
   void printStr(string);
+  void clearScreen();
+  void bookSearchMenu(int&);
+  void afterSearch(int&);
 };
 
 #endif
