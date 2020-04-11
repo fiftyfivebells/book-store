@@ -4,7 +4,7 @@ create table publisher
   (email_address   varchar(30),
    street_name   varchar(20),
    street_number   numeric(4, 0),
-   apt_number   numeric(4, 0),
+   apt_number   varchar(5),
    city   varchar(20),
    publisher_state   varchar(20),
    zip   numeric(5, 0),
@@ -14,10 +14,9 @@ create table publisher
   );
 
 create table book
-  (isbn   varchar(20),
-   title   varchar(25) not null,
-   author   varchar(25) not null,
-   publisher   varchar(25) not null,
+  (isbn   varchar(10),
+   title   varchar(150) not null,
+   publisher   varchar(80) not null,
    pages   numeric(4, 0) not null,
    quantity   numeric(3, 0) not null check (quantity > -1),
    price   numeric(5, 2) not null,
@@ -35,6 +34,14 @@ create table author
     on delete cascade
   );
 
+create table genre
+  (isbn   varchar(10),
+   genre   varchar(50) not null,
+   primary key (isbn, genre),
+   foreign key (isbn) references book
+    on delete cascade
+  );
+
 create table customer
   (email_address   varchar(30),
    first_name   varchar(20) not null,
@@ -48,7 +55,7 @@ create table customer_address
    customer_email   varchar(30),
    street_number   numeric(4, 0) not null,
    street_name   varchar(20) not null,
-   apt_number   numeric(4, 0),
+   apt_number   varchar(5),
    city   varchar(20) not null,
    c_state   varchar(20) not null,
    zip   numeric(5, 0) not null,
@@ -71,7 +78,7 @@ create table book_order
    amount   numeric(7, 2) not null,
    shipping_street_number   numeric(4, 0) not null,
    shipping_street_name   varchar(20) not null,
-   shipping_apt_number   numeric(4, 0),
+   shipping_apt_number   varchar(5),
    shipping_city   varchar(20) not null,
    shipping_state   varchar(20) not null,
    shipping_zip   numeric(5, 0) not null,
@@ -110,8 +117,6 @@ create table order_contains
    foreign key (email_address) references publisher
     on delete cascade
   );
-
-
 
 create table orders_books
   (owner_id   uuid,
