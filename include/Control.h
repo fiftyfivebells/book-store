@@ -8,10 +8,13 @@ class Control {
  public:
   Control() noexcept;
   void launch();
+  void bookShopping();
+  void addToCart();
 
  private:
   View view;
   Database db;
+
 };
 
 #endif
