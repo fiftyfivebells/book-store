@@ -27,6 +27,14 @@ create table book
     on delete cascade
   );
 
+create table author
+  (author   varchar(80),
+   isbn   varchar(10),
+   primary key (author, isbn),
+   foreign key (isbn) references book
+    on delete cascade
+  );
+
 create table customer
   (email_address   varchar(30),
    first_name   varchar(20) not null,
