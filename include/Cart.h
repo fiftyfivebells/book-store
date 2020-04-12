@@ -13,7 +13,6 @@ class Database;
 
 class Cart {
  public:
-  //Cart(int);
   ~Cart();
   void emptyCart();
   void addItem(CartItem *);
