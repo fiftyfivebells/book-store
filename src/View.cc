@@ -117,6 +117,20 @@ void View::displayBook(CartItem *item) {
        << item->getQuantity() << " in cart." << endl;
 }
 
+void View::showCart(Cart *cart) {
+  clearScreen();
+
+  if (cart->getItems().size() == 0) {
+    cout << "Nothing in your cart." << endl;
+    return;
+  }
+
+  for (int i = 0; i < cart->getItems().size(); ++i) {
+    cout << "Item " << (i + 1) << ": ";
+    displayBook(cart->getItems()[i]);
+  }
+}
+
 void View::displayCartOps(int &choice) {
   printStr("What would you like to do?");
   printStr("  (1) View shopping cart");
