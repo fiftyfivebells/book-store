@@ -26,6 +26,7 @@ class Database {
   bool updateBookQuantity(string, int);
   void createBookOrderItem(string &, CartItem *);
   void addCustomer(Customer *, Address *, Address *);
+  void addAddress(string, string, Address *);
 
  private:
   connection conn;
