@@ -1,6 +1,8 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
+#include "Cart.h"
+#include "Customer.h"
 #include "Database.h"
 #include "View.h"
 
