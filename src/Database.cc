@@ -116,6 +116,18 @@ bool Database::updateBookQuantity(string id, int q) {
   return true;
 }
 
+void Database::createBookOrderItem(string &id, CartItem *item) {
+  nontransaction n(conn);
+    string query =
+        "insert into order_contains (isbn, order_number, quantity) values ";
+  query += "('" + item->getIsbn() + "', '{" + id + "}', " +
+           to_string(item->getQuantity()) + ");";
+
+  result(n.exec(query));
+
+  n.abort();
+  updateBookQuantity(item->getIsbn(), item->getQuantity());
+}
 
 void Database::addCustomer(Customer *c, Address *ship, Address *bill) {
   nontransaction n(conn);
