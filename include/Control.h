@@ -9,6 +9,7 @@
 class Control {
  public:
   Control() noexcept;
+  ~Control();
   void launch();
   void bookShopping();
   void addToCart();
