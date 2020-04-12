@@ -46,6 +46,28 @@ void Control::bookShopping() {
   }
 }
 
+void Control::addToCart() {
+  string isbn;
+  string query;
+  int quantity;
+  result r;
+
+  view.printStr("Enter the ISBN of the book:");
+  view.readStr(isbn);
+  view.printStr("Enter quantity to purchase: ");
+  view.readInt(quantity);
+
+  query = "select * from book natural right outer join author where isbn = '" +
+          isbn + "';";
+  r = db.executeQuery(query);
+  CartItem *temp = new CartItem(isbn, r[0][1].as<string>(), quantity,
+                                r[0][5].as<float>(), r[0][6].as<int>());
+
+  for (auto row : r) temp->addAuthor(r[0][7].as<string>());
+
+  cart.addItem(temp);
+}
+
 
 void Control::launch() {
   int choice, owner;
