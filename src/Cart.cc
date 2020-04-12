@@ -23,3 +23,5 @@ float Cart::calculatePurchase() {
 
   return amount;
 }
+
+deque<CartItem *> Cart::getItems() { return items; }
