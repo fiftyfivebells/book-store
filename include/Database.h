@@ -22,7 +22,7 @@ class Database {
   result queryBookTitle(string &);
   result queryBookPublisher(string &);
   result queryBookGenre(string &);
-  bool makeBookOrder(Cart *, Address *);
+  bool makeBookOrder(Cart *, Address *, Customer *);
   bool updateBookQuantity(string, int);
   void createBookOrderItem(string &, CartItem *);
   void addCustomer(Customer *, Address *, Address *);
