@@ -17,6 +17,7 @@ class View {
   void clearScreen();
   void bookSearchMenu(int&);
   void afterSearch(int&);
+  void displayCartOps(int&);
 };
 
 #endif
