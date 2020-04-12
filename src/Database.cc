@@ -95,7 +95,27 @@ bool Database::makeBookOrder(Cart *c, Address *a) {
 
   if (r.size() == 0) return false;
 
-  return result(n.exec(query));
+  string id = r[0][0].as<string>();
+
+  n.abort();
+
+  for (unsigned long int i = 0; i < c->getItems().size(); ++i)
+    createBookOrderItem(id, c->getItems()[i]);
+
+  return true;
+}
+
+bool Database::updateBookQuantity(string id, int q) {
+  nontransaction n(conn);
+  string query = "update book set quantity = quantity - " + to_string(q) +
+                 " where isbn = '" + id + "';";
+
+  result(n.exec(query));
+
+  n.abort();
+  return true;
+}
+
 
 void Database::addCustomer(Customer *c, Address *ship, Address *bill) {
   nontransaction n(conn);
