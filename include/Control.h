@@ -24,7 +24,6 @@ class Control {
   Cart cart;
   View view;
   Database db;
-
 };
 
 #endif
