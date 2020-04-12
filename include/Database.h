@@ -3,6 +3,8 @@
 
 #include <pqxx/pqxx>
 #include <string>
+#include "Address.h"
+#include "Cart.h"
 
 using namespace std;
 using namespace pqxx;
