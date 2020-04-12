@@ -9,6 +9,9 @@
 using namespace std;
 using namespace pqxx;
 
+// forward declare
+class Cart;
+
 class Database {
  public:
   Database(string, string, string, string, string);
