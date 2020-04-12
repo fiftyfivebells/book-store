@@ -1,7 +1,12 @@
 #include "../include/CartItem.h"
 
-CartItem::CartItem(string isbn, string title, int quantity)
-    : isbn(isbn), quantity(quantity), title(title) {}
+CartItem::CartItem(string isbn, string title, int quantity, float price,
+                   int toPublisher)
+    : isbn(isbn),
+      quantity(quantity),
+      title(title),
+      price(price),
+      toPublisher(toPublisher) {}
 
 void CartItem::addAuthor(string author) {
   authors.push_back(author);
