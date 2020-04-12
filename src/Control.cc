@@ -80,6 +80,12 @@ void Control::showCartOperations() {
   }
 }
 
+void Control::completePurchase() {
+  Address *a = new Address("100", "Willow Street", "", "Boston", "MA", "02102");
+
+  cart.purchaseCart(&db, a);
+}
+
 
 void Control::launch() {
   int choice, owner;
