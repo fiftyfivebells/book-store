@@ -149,19 +149,19 @@ void View::showCart(Cart *cart) {
 }
 
 void View::displayCartOps(int &choice) {
-  printStr("What would you like to do?");
-  printStr("  (1) View shopping cart");
-  printStr("  (2) Purchase shopping cart");
-  printStr("  (3) Empty cart");
-  printStr("  (0) Back to previous ");
-  printStr("Enter your selection: ");
+  cout << "What would you like to do?" << endl;
+  cout << "  (1) View shopping cart" << endl;
+  cout << "  (2) Purchase shopping cart" << endl;
+  cout << "  (3) Empty cart" << endl;
+  cout << "  (0) Back to previous " << endl;
+  cout << "Enter your selection: " << endl;
 
   cin >> choice;
 
   if (choice == 0) return;
 
   while (choice < 0 || choice > 3) {
-    printStr("Enter your selection: ");
+    cout << "Enter your selection: " << endl;
     cin >> choice;
   }
 }
