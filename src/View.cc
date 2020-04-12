@@ -112,6 +112,11 @@ void View::afterSearch(int &choice) {
   }
 }
 
+void View::displayBook(CartItem *item) {
+  cout << item->getIsbn() << ": " << setw(12) << item->getTitle() << ", "
+       << item->getQuantity() << " in cart." << endl;
+}
+
 void View::displayCartOps(int &choice) {
   printStr("What would you like to do?");
   printStr("  (1) View shopping cart");
