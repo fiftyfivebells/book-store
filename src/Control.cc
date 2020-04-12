@@ -124,9 +124,6 @@ void Control::launch() {
   view.selectMenu(owner);
   if (owner == 0) return;
 
-  view.printStr("\033[2J");
-  view.printStr("\033[1;1H");
-
   while (1) {
     if (owner == 1) {
       view.showCustomerMenu(choice);
