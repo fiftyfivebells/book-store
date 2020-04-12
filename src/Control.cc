@@ -5,7 +5,9 @@
 using namespace std;
 
 Control::Control() noexcept
-    : db("3005 project", "stephen", "supersecret", "127.0.0.1", "5432") {}
+    : cart(),
+      db("3005 project", "stephen", "supersecret", "127.0.0.1", "5432") {}
+
 Control::~Control() {}
 
 void Control::bookShopping() {
@@ -36,6 +38,10 @@ void Control::bookShopping() {
       view.afterSearch(menuChoice);
       if (menuChoice == 2) break;
       else addToCart();
+      if (menuChoice == 2)
+        break;
+      else
+        addToCart();
     }
   }
 }

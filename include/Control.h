@@ -21,6 +21,7 @@ class Control {
   void createAddress(Address **);
 
  private:
+  Cart cart;
   View view;
   Database db;
 
