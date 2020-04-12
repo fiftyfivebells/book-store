@@ -8,6 +8,8 @@ using namespace std;
 class Address {
  public:
   Address(string, string, string, string, string, string);
+  Address(const Address &);
+  Address &operator=(const Address);
   string getStreetNum();
   string getStreetName();
   string getAptNum();
