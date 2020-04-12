@@ -74,7 +74,7 @@ result Database::queryBookAuthor(string &searchTerm) {
   return r;
 }
 
-bool Database::makeBookOrder(Cart *c, Address *a) {
+bool Database::makeBookOrder(Cart *c, Address *a, Customer *cust) {
   nontransaction n(conn);
   result r;
 
@@ -98,6 +98,8 @@ bool Database::makeBookOrder(Cart *c, Address *a) {
   string id = r[0][0].as<string>();
 
   n.abort();
+  string email = cust->getEmail();
+  createCustomerOrder(id, email);
 
   for (unsigned long int i = 0; i < c->getItems().size(); ++i)
     createBookOrderItem(id, c->getItems()[i]);
