@@ -145,4 +145,19 @@ void Database::addCustomer(Customer *c, Address *ship, Address *bill) {
 
 }
 
+void Database::addAddress(string email, string type, Address *a) {
+  nontransaction n(conn);
+  string query = "insert into customer_address (address_type, customer_email, street_number, street_name, apt_number, city, state, zip) values ";
+
+  query += "'(" + type + "', ";
+  query += email + "', ";
+  query += a->getStreetNum() + ", '";
+  query += a->getStreetName() + "', '";
+  query += a->getAptNum() + "', '";
+  query += a->getCity() + "', '";
+  query += a->getState() + "', ";
+  query += a->getZip() + ";";
+
+  result(n.exec(query));
+  n.abort();
 }
