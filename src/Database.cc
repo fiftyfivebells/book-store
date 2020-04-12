@@ -14,42 +14,66 @@ Database::~Database() { conn.disconnect(); }
 
 result Database::executeQuery(string &query) {
   nontransaction n(conn);
+  result r;
 
-  return result(n.exec(query));
+  r = result(n.exec(query));
+  n.commit();
+
+  return r;
 }
 
 result Database::queryBookTitle(string &searchTerm) {
   nontransaction n(conn);
-
+  result r;
   string query = "select * from book natural join author where title ilike '%" +
                  searchTerm + "%'";
 
-  return result(n.exec(query));
+  r = result(n.exec(query));
+  n.commit();
+
+  return r;
 }
 
 result Database::queryBookGenre(string &searchTerm) {
   nontransaction n(conn);
+  result r;
 
   string query = "select * from book natural join genre where genre ilike '%" +
                  searchTerm + "%'";
 
-  return result(n.exec(query));
+  r = result(n.exec(query));
+  n.commit();
+
+  return r;
 }
 
 result Database::queryBookPublisher(string &searchTerm) {
   nontransaction n(conn);
+  result r;
 
-  string query = "select * from book where publisher ilike '%" +
-                 searchTerm + "%'";
+  string query =
+      "select * from book where publisher ilike '%" + searchTerm + "%'";
 
-  return result(n.exec(query));
+  r = result(n.exec(query));
+  n.commit();
+
+  return r;
 }
 
 result Database::queryBookAuthor(string &searchTerm) {
   nontransaction n(conn);
+  result r;
 
-  string query = "select * from book natural join author where author ilike '%" +
-                 searchTerm + "%'";
+  string query =
+      "select * from book natural join author where author ilike '%" +
+      searchTerm + "%'";
+
+  r = result(n.exec(query));
+  n.commit();
+
+  return r;
+}
+
 
   return result(n.exec(query));
 
