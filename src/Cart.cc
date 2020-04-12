@@ -12,4 +12,14 @@ void Cart::emptyCart() { items.clear(); }
 
 void Cart::purchaseCart(Database *db) {
   
+void Cart::purchaseCart(Database *db, Address *a) { db->makeBookOrder(this, a); }
+
+float Cart::calculatePurchase() {
+  float amount = 0;
+
+  for (auto it : items) {
+    amount += it->getQuantity() * it->getPrice();
+  }
+
+  return amount;
 }
