@@ -101,7 +101,7 @@ create table order_contains
   (isbn   varchar(20),
    order_number   uuid not null,
    quantity   numeric(4, 0) not null check (quantity > -1),
-   primary key (isbn),
+   primary key (isbn, order_number),
    foreign key (isbn) references book
     on delete set null,
    foreign key (order_number) references book_order
