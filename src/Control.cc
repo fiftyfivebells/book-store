@@ -126,8 +126,14 @@ void Control::launch() {
 
   while (1) {
     if (owner == 1) {
+      view.displayLogInOrRegister(choice, owner);
+      if (choice == 0) break;
+      if (choice == 1) logInUser(&user);
+      if (choice == 2) registerUser(&user);
       view.showCustomerMenu(choice);
       if (choice == 0) break;
+      if (choice == 1) bookShopping();
+      if (choice == 2) showCartOperations();
     } else {
       view.showOwnerMenu(choice);
       if (choice == 0) break;
