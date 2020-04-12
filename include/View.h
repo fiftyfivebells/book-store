@@ -1,6 +1,7 @@
 #ifndef VIEW_H
 #define VIEW_H
 
+#include "Cart.h"
 #include <string>
 
 using namespace std;
@@ -17,6 +18,8 @@ class View {
   void clearScreen();
   void bookSearchMenu(int&);
   void afterSearch(int&);
+  void showCart(Cart*);
+  void displayBook(CartItem *);
   void displayCartOps(int&);
 };
 
