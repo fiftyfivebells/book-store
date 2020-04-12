@@ -13,6 +13,12 @@ class Control {
   void launch();
   void bookShopping();
   void addToCart();
+  void showCartOperations();
+  void completePurchase();
+  void emptyCart();
+  void logInUser(Customer **);
+  void registerUser(Customer **);
+  void createAddress(Address **);
 
  private:
   View view;
