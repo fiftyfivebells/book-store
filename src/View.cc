@@ -111,3 +111,21 @@ void View::afterSearch(int &choice) {
     cin >> choice;
   }
 }
+
+void View::displayCartOps(int &choice) {
+  printStr("What would you like to do?");
+  printStr("  (1) View shopping cart");
+  printStr("  (2) Purchase shopping cart");
+  printStr("  (3) Empty cart");
+  printStr("  (0) Back to previous ");
+  printStr("Enter your selection: ");
+
+  cin >> choice;
+
+  if (choice == 0) return;
+
+  while (choice < 0 || choice > 3) {
+    printStr("Enter your selection: ");
+    cin >> choice;
+  }
+}
