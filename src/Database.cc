@@ -74,6 +74,26 @@ result Database::queryBookAuthor(string &searchTerm) {
   return r;
 }
 
+bool Database::makeBookOrder(Cart *c, Address *a) {
+  nontransaction n(conn);
+  result r;
+
+  string query =
+      "insert into book_order (amount, shipping_street_number, "
+      "shipping_street_name, shipping_apt_number, shipping_city, "
+      "shipping_state, shipping_zip, status, current_location) values";
+
+  query += "(";
+  query += to_string(c->calculatePurchase());
+  query += ", " + a->getStreetNum() + ", '" + a->getStreetName() + "', '" +
+           a->getAptNum() + "', '" + a->getCity() + "', '" + a->getState() +
+           "', " + a->getZip() + ", ";
+
+  query += "'shipped', 'warehouse') returning order_number;";
+
+  r = result(n.exec(query));
+
+  if (r.size() == 0) return false;
 
   return result(n.exec(query));
 
