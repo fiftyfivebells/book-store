@@ -16,4 +16,8 @@ string CartItem::getTitle() { return title; }
 
 int CartItem::getQuantity() { return quantity; }
 
+float CartItem::getPrice() { return price; }
+
+int CartItem::getToPublisher() { return toPublisher; }
+
 deque<string> CartItem::getAuthors() { return authors; }
