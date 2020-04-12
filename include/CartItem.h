@@ -8,7 +8,7 @@ using namespace std;
 
 class CartItem {
  public:
-  CartItem(string = "", string = "", int = 0);
+  CartItem(string = "", string = "", int = 0, float = 0, int = 0);
   void addAuthor(string);
   string getIsbn();
   string getTitle();
