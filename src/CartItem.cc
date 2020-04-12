@@ -8,9 +8,7 @@ CartItem::CartItem(string isbn, string title, int quantity, float price,
       price(price),
       toPublisher(toPublisher) {}
 
-void CartItem::addAuthor(string author) {
-  authors.push_back(author);
-}
+void CartItem::addAuthor(string author) { authors.push_back(author); }
 
 string CartItem::getIsbn() { return isbn; }
 
