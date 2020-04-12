@@ -96,10 +96,11 @@ void View::clearScreen() {
 }
 
 void View::afterSearch(int &choice) {
-  printStr("What would you like to do?");
-  printStr("  (1) Purchase one of selection");
-  printStr("  (2) Search again");
-  printStr("Enter your selection:");
+  cout << "What would you like to do?" << endl;
+  cout << "  (1) Purchase one of selection" << endl;
+  cout << "  (2) Search again" << endl;
+  cout << "  (0) Back to previous menu" << endl;
+  cout << "Enter your selection: ";
 
   cin >> choice;
 
