@@ -10,8 +10,6 @@ void Cart::addItem(CartItem *item) { items.push_front(item); }
 
 void Cart::emptyCart() { items.clear(); }
 
-void Cart::purchaseCart(Database *db) {
-  
 void Cart::purchaseCart(Database *db, Address *a) { db->makeBookOrder(this, a); }
 
 float Cart::calculatePurchase() {
