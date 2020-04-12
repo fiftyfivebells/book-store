@@ -129,6 +129,17 @@ void Database::createBookOrderItem(string &id, CartItem *item) {
   updateBookQuantity(item->getIsbn(), item->getQuantity());
 }
 
+void Database::createCustomerOrder(string &id, string &email) {
+  nontransaction n(conn);
+  string query =
+      "insert into customer_book_order (order_number, customer_email) values ";
+
+  query += "('{" + id + "}', '" + email + "');";
+
+  result(n.exec(query));
+  n.abort();
+}
+
 void Database::addCustomer(Customer *c, Address *ship, Address *bill) {
   nontransaction n(conn);
   string query =
