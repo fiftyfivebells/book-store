@@ -21,6 +21,9 @@ class Database {
   result queryBookTitle(string &);
   result queryBookPublisher(string &);
   result queryBookGenre(string &);
+  bool makeBookOrder(Cart *, Address *);
+  bool updateBookQuantity(string, int);
+  void createBookOrderItem(string &, CartItem *);
 
  private:
   connection conn;
