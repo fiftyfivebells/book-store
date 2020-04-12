@@ -1,13 +1,13 @@
 #include "../include/Address.h"
 
-Address::Address(string &stNum, string &stName, string &aptNum, string &city,
-                 string &state, string &zip) {
+Address::Address(string stNum, string stName, string aptNum, string city,
+                 string state, string zip) {
   streetNum = stNum;
   streetName = stName;
-  aptNum = aptNum;
-  city = city;
-  state = state;
-  zip = zip;
+  this->aptNum = aptNum;
+  this->city = city;
+  this->state = state;
+  this->zip = zip;
 }
 
 string Address::getStreetNum() { return streetNum; }
