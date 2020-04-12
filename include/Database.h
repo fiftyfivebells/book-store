@@ -25,6 +25,7 @@ class Database {
   bool makeBookOrder(Cart *, Address *, Customer *);
   bool updateBookQuantity(string, int);
   void createBookOrderItem(string &, CartItem *);
+  void createCustomerOrder(string &, string &);
   void addCustomer(Customer *, Address *, Address *);
   void addAddress(string, string, Address *);
 
