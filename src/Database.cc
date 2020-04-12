@@ -52,4 +52,21 @@ result Database::queryBookAuthor(string &searchTerm) {
                  searchTerm + "%'";
 
   return result(n.exec(query));
+
+void Database::addCustomer(Customer *c, Address *ship, Address *bill) {
+  nontransaction n(conn);
+  string query =
+      "insert into customer (email_address, first_name, last_name, password) "
+      "values ";
+
+  query += "('" + c->getEmail() + "', '" + c->getFirst() + "', '" +
+    c->getLast() + "', '" + c->getPassword() + "';";
+
+  result(n.exec(query));
+  n.abort();
+  addAddress(c->getEmail(), "shipping", ship);
+  addAddress(c->getEmail(), "billing", bill);
+
+}
+
 }

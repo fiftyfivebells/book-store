@@ -5,6 +5,7 @@
 #include <string>
 #include "Address.h"
 #include "Cart.h"
+#include "Customer.h"
 
 using namespace std;
 using namespace pqxx;
@@ -24,6 +25,7 @@ class Database {
   bool makeBookOrder(Cart *, Address *);
   bool updateBookQuantity(string, int);
   void createBookOrderItem(string &, CartItem *);
+  void addCustomer(Customer *, Address *, Address *);
 
  private:
   connection conn;
