@@ -93,6 +93,30 @@ void Control::emptyCart() {
   view.readLine(s);
 }
 
+void Control::createAddress(Address **a) {
+  string streetNum;
+  string streetName;
+  string aptNum;
+  string city;
+  string state;
+  string zip;
+
+  view.printStr("Enter a street number: ");
+  view.readLine(streetNum);
+  view.printStr("Enter a street name: ");
+  view.readLine(streetName);
+  view.printStr("Enter apartment number (or enter \"\" if none): ");
+  view.readLine(aptNum);
+  view.printStr("Enter your city: ");
+  view.readLine(city);
+  view.printStr("Enter your state: ");
+  view.readLine(state);
+  view.printStr("Enter your zip code: ");
+  view.readLine(zip);
+
+  *a = new Address(streetNum, streetName, aptNum, city, state, zip);
+}
+
 
 void Control::launch() {
   int choice, owner;
