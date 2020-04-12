@@ -68,6 +68,18 @@ void Control::addToCart() {
   cart.addItem(temp);
 }
 
+void Control::showCartOperations() {
+  int menuChoice;
+  while (1) {
+    view.displayCartOps(menuChoice);
+
+    if (menuChoice == 0) break;
+    if (menuChoice == 1) view.showCart(&cart);
+    if (menuChoice == 2) completePurchase();
+    if (menuChoice == 3) emptyCart();
+  }
+}
+
 
 void Control::launch() {
   int choice, owner;
