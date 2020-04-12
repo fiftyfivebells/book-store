@@ -14,12 +14,16 @@ class CartItem {
   string getTitle();
   deque<string> getAuthors();
   int getQuantity();
+  float getPrice();
+  int getToPublisher();
 
  private:
   string isbn;
   string title;
+  float price;
   deque<string> authors;
   int quantity;
+  int toPublisher;
 };
 
 #endif
