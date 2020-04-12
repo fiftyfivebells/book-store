@@ -86,6 +86,13 @@ void Control::completePurchase() {
   cart.purchaseCart(&db, a);
 }
 
+void Control::emptyCart() {
+  cart.emptyCart();
+  view.printStr("Your cart is now empty. Press any key to continue");
+  string s;
+  view.readLine(s);
+}
+
 
 void Control::launch() {
   int choice, owner;
