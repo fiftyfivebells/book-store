@@ -10,7 +10,10 @@ Control::Control(Database *db) noexcept
   owner = NULL;
 }
 
-Control::~Control() {}
+Control::~Control() {
+  delete user;
+  delete owner;
+}
 
 void Control::bookShopping() {
   string searchTerm;
