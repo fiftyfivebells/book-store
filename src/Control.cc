@@ -43,13 +43,12 @@ void Control::bookShopping() {
 
     while (1) {
       view.afterSearch(menuChoice);
-      if (menuChoice == 2) break;
-      else addToCart();
-      if (menuChoice == 2)
+      if (menuChoice == 2 || menuChoice == 0)
         break;
       else
         addToCart();
     }
+    if (menuChoice == 0) break;
   }
 }
 
