@@ -6,6 +6,7 @@
 #include "Address.h"
 #include "Cart.h"
 #include "Customer.h"
+#include "Owner.h"
 
 using namespace std;
 using namespace pqxx;
@@ -28,6 +29,7 @@ class Database {
   void createCustomerOrder(string &, string &);
   void addCustomer(Customer *, Address *, Address *);
   void addAddress(string, string, Address *);
+  void getOwner(string &, Owner **);
 
  private:
   connection conn;
