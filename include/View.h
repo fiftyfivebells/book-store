@@ -23,6 +23,10 @@ class View {
   void displayBook(CartItem *);
   void displayCartOps(int &);
   void displayLogInOrRegister(int &, int &);
+  void displayAccountOptions(int &);
+  void displayReportsOptions(int &);
+  void displayPublisherOrder(int &);
+  void displayExpenseOptions(int &);
 };
 
 #endif
