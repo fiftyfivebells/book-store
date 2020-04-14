@@ -32,7 +32,7 @@ class Database {
   void getOwner(string &, Owner **);
 
  private:
-  connection conn;
+  connection *conn;
 };
 
 #endif

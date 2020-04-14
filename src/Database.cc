@@ -17,7 +17,7 @@ void Database::setConnection(string db, string user, string pass, string addr,
 }
 
 result Database::executeQuery(string &query) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   result r;
 
   r = result(n.exec(query));
@@ -27,7 +27,7 @@ result Database::executeQuery(string &query) {
 }
 
 result Database::queryBookTitle(string &searchTerm) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   result r;
   string query = "select * from book natural join author where title ilike '%" +
                  searchTerm + "%'";
@@ -39,7 +39,7 @@ result Database::queryBookTitle(string &searchTerm) {
 }
 
 result Database::queryBookGenre(string &searchTerm) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   result r;
 
   string query = "select * from book natural join genre where genre ilike '%" +
@@ -52,7 +52,7 @@ result Database::queryBookGenre(string &searchTerm) {
 }
 
 result Database::queryBookPublisher(string &searchTerm) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   result r;
 
   string query =
@@ -65,7 +65,7 @@ result Database::queryBookPublisher(string &searchTerm) {
 }
 
 result Database::queryBookAuthor(string &searchTerm) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   result r;
 
   string query =
@@ -79,7 +79,7 @@ result Database::queryBookAuthor(string &searchTerm) {
 }
 
 bool Database::makeBookOrder(Cart *c, Address *a, Customer *cust) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   result r;
 
   string query =
@@ -112,7 +112,7 @@ bool Database::makeBookOrder(Cart *c, Address *a, Customer *cust) {
 }
 
 bool Database::updateBookQuantity(string id, int q) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   string query = "update book set quantity = quantity - " + to_string(q) +
                  " where isbn = '" + id + "';";
 
@@ -123,7 +123,7 @@ bool Database::updateBookQuantity(string id, int q) {
 }
 
 void Database::createBookOrderItem(string &id, CartItem *item) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
     string query =
         "insert into order_contains (isbn, order_number, quantity) values ";
   query += "('" + item->getIsbn() + "', '{" + id + "}', " +
@@ -136,7 +136,7 @@ void Database::createBookOrderItem(string &id, CartItem *item) {
 }
 
 void Database::createCustomerOrder(string &id, string &email) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   string query =
       "insert into customer_book_order (order_number, customer_email) values ";
 
@@ -147,7 +147,7 @@ void Database::createCustomerOrder(string &id, string &email) {
 }
 
 void Database::addCustomer(Customer *c, Address *ship, Address *bill) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   cout << "customer name: " << c->getFirst() << endl;
   string query =
       "insert into customer (email_address, first_name, last_name, password) "
@@ -163,7 +163,7 @@ void Database::addCustomer(Customer *c, Address *ship, Address *bill) {
 }
 
 void Database::addAddress(string email, string type, Address *a) {
-  nontransaction n(conn);
+  nontransaction n(*conn);
   string query =
       "insert into customer_address (address_type, customer_email, "
       "street_number, street_name, apt_number, city, c_state, zip) values ";
