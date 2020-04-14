@@ -208,6 +208,16 @@ void Control::registerUser(Customer **c) {
   db->addCustomer(*c, ship, bill);
 }
 
+void Control::showAccountOperations() {
+  int menuChoice;
+  while (1) {
+    view.displayAccountOptions(menuChoice);
+
+    if (menuChoice == 0) break;
+    if (menuChoice == 1) getCustomerHistory();
+    if (menuChoice == 2) trackCustomerOrders();
+  }
+}
 
 void Control::getCustomerHistory() {
   result r = db->getCustomerOrderHistory(user);
