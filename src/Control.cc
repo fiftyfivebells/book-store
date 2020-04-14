@@ -123,6 +123,33 @@ void Control::createAddress(Address **a) {
   *a = new Address(streetNum, streetName, aptNum, city, state, zip);
 }
 
+void Control::logInUser(Customer **c) {
+  string email;
+  string pass;
+  string actualPass;
+  Address *shipping;
+  Address *billing;
+
+  view.clearScreen();
+  view.printStr("Enter your email: ");
+  view.readStr(email);
+  actualPass = db->getUserPass(email);
+
+  do {
+    view.printStr("Enter your password (or enter 0 to quit): ");
+    view.readStr(pass);
+
+    if (pass == "0") break;
+    if (pass != actualPass) view.printStr("Password was incorrect.\n");
+  } while (pass != actualPass && pass != "0");
+
+  if (pass == "0") return;
+
+  db->getCustomer(email, c, &shipping, &billing);
+  (*c)->setBilling(billing);
+  (*c)->setShipping(shipping);
+}
+
 
 void Control::launch() {
   int choice, owner;
