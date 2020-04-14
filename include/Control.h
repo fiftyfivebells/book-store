@@ -11,6 +11,14 @@ class Control {
   Control(Database *) noexcept;
   ~Control();
   void launch();
+
+ private:
+  Cart cart;
+  View view;
+  Database *db;
+  Customer *user;
+  Owner *owner;
+
   void bookShopping();
   void addToCart();
   void showCartOperations();
@@ -19,11 +27,6 @@ class Control {
   void logInUser(Customer **);
   void registerUser(Customer **);
   void createAddress(Address **);
-
- private:
-  Cart cart;
-  View view;
-  Database db;
 };
 
 #endif
