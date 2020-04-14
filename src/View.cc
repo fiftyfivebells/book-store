@@ -123,9 +123,9 @@ void View::afterSearch(int &choice) {
 
   cin >> choice;
 
-  if (choice == 2) return;
+  if (choice == 2 || choice == 0) return;
 
-  while (choice < 1 || choice > 2) {
+  while (choice < 0 || choice > 2) {
     printStr("Enter your selection:");
     cin >> choice;
   }
