@@ -148,6 +148,7 @@ void View::showCart(Cart *cart) {
   }
 
   for (int i = 0; i < cart->getItems().size(); ++i) {
+  for (unsigned long int i = 0; i < cart->getItems().size(); ++i) {
     cout << "Item " << (i + 1) << ": ";
     displayBook(cart->getItems()[i]);
   }
