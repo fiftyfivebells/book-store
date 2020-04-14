@@ -43,17 +43,18 @@ void View::displayLogInOrRegister(int &choice, int &owner) {
 }
 
 void View::showCustomerMenu(int &choice) {
-  cout << endl << endl;
+  clearScreen();
   cout << "Select an option: " << endl;
   cout << "  (1) Search for books" << endl;
   cout << "  (2) Look at cart" << endl;
+  cout << "  (3) Account options" << endl;
   cout << "  (0) Exit" << endl << endl;
 
   cout << "Enter your selection: ";
   cin >> choice;
   if (choice == 0) return;
 
-  while (choice < 0 || choice > 2) {
+  while (choice < 0 || choice > 3) {
     cout << "Enter your selection: ";
     cin >> choice;
   }
