@@ -3,6 +3,7 @@
 
 #include <string>
 #include "Cart.h"
+#include "Database.h"
 
 using namespace std;
 
