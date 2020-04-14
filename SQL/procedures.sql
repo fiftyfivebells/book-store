@@ -72,11 +72,11 @@ create or replace function expense_report(start_date date, end_date date)
 $$
 language sql stable;
 
-create or replace function order_from_publisher(ownerid uuid, email varchar, isbn varchar, quant numeric)
+create or replace function order_from_publisher(ownerid uuid, email varchar, book_id varchar, quant numeric)
   returns void as
   $$
   insert into orders_books (owner_id, email_address, isbn, quantity) values
-    (ownerid, email, isbn, quant);
-  update book set quantity = quantity + quant where isbn = isbn;
+    (ownerid, email, book_id, quant);
+  update book set quantity = quantity + quant where isbn = book_id;
   $$
 language sql volatile;
