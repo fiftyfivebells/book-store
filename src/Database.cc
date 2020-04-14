@@ -221,6 +221,16 @@ void Database::getCustomer(string &email, Customer **c, Address **ship,
   getAddress(email, "billing", bill);
 }
 
+void Database::getOwner(string &name, Owner **o) {
+  nontransaction n(*conn);
+  result r;
+  string query = "select * from owner where first_name = '" + name + "';";
+
+  r = result(n.exec(query));
+
+  *o = new Owner(r[0][0].as<string>(), r[0][1].as<string>(),
+                 r[0][2].as<string>(), r[0][3].as<string>());
+}
 
 void Database::getAddress(string email, string type, Address **a) {
   result r;

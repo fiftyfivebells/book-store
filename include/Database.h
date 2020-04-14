@@ -28,6 +28,7 @@ class Database {
   bool makeBookOrder(Cart *, Address *, Customer *);
   void addCustomer(Customer *, Address *, Address *);
   string getUserPass(string &);
+  string getOwnerPass(string &);
   void getCustomer(string &, Customer **, Address **, Address **);
   void getOwner(string &, Owner **);
   result getCustomerOrderHistory(Customer *);
