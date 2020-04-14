@@ -30,10 +30,10 @@ void Control::bookShopping() {
     view.readLine(searchTerm);
     view.clearScreen();
 
-    if (menuChoice == 1) r = db.queryBookTitle(searchTerm);
-    if (menuChoice == 2) r = db.queryBookAuthor(searchTerm);
-    if (menuChoice == 3) r = db.queryBookGenre(searchTerm);
-    if (menuChoice == 4) r = db.queryBookPublisher(searchTerm);
+    if (menuChoice == 1) r = db->queryBookTitle(searchTerm);
+    if (menuChoice == 2) r = db->queryBookAuthor(searchTerm);
+    if (menuChoice == 3) r = db->queryBookGenre(searchTerm);
+    if (menuChoice == 4) r = db->queryBookPublisher(searchTerm);
 
     for (auto row : r) {
       cout << row[0].as<string>() << ": " + row[1].as<string>() << endl;
