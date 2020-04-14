@@ -180,3 +180,23 @@ void Database::addAddress(string email, string type, Address *a) {
   result(n.exec(query));
   n.abort();
 }
+
+void Database::orderFromPublisher(string &id, string &isbn, int &quantity) {
+  string email = getPublisher(isbn);
+  nontransaction n(*conn);
+
+  string query = "select * from order_from_publisher('{" + id + "}', '" +
+                 email + "', '" + isbn + "', " + to_string(quantity) + ");";
+
+  result(n.exec(query));
+}
+
+string Database::getPublisher(string &isbn) {
+  nontransaction n(*conn);
+  result r;
+  string query = "select publisher from book where isbn = '" + isbn + "';";
+  r = result(n.exec(query));
+  n.abort();
+
+  return r[0][0].as<string>();
+}

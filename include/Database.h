@@ -30,9 +30,11 @@ class Database {
   void addCustomer(Customer *, Address *, Address *);
   void addAddress(string, string, Address *);
   void getOwner(string &, Owner **);
+  void orderFromPublisher(string &, string &, int &);
 
  private:
   connection *conn;
+  string getPublisher(string &);
 };
 
 #endif
