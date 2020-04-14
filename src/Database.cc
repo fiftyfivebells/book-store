@@ -29,8 +29,7 @@ result Database::executeQuery(string &query) {
 result Database::queryBookTitle(string &searchTerm) {
   nontransaction n(*conn);
   result r;
-  string query = "select * from book natural join author where title ilike '%" +
-                 searchTerm + "%'";
+  string query = "select * from book_title('" + searchTerm + "');";
 
   r = result(n.exec(query));
   n.commit();
@@ -41,9 +40,7 @@ result Database::queryBookTitle(string &searchTerm) {
 result Database::queryBookGenre(string &searchTerm) {
   nontransaction n(*conn);
   result r;
-
-  string query = "select * from book natural join genre where genre ilike '%" +
-                 searchTerm + "%'";
+  string query = "select * from book_genre('" + searchTerm + "';";
 
   r = result(n.exec(query));
   n.commit();
@@ -68,9 +65,7 @@ result Database::queryBookAuthor(string &searchTerm) {
   nontransaction n(*conn);
   result r;
 
-  string query =
-      "select * from book natural join author where author ilike '%" +
-      searchTerm + "%'";
+  string query = "select * from book_author('" + searchTerm + "');";
 
   r = result(n.exec(query));
   n.commit();
