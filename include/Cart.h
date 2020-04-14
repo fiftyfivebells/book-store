@@ -4,6 +4,7 @@
 #include <deque>
 #include "Address.h"
 #include "CartItem.h"
+#include "Customer.h"
 #include "Database.h"
 
 using namespace std;
