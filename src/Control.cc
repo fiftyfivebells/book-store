@@ -237,6 +237,23 @@ void Control::getCustomerHistory() {
   view.readStr(s);
 }
 
+void Control::orderFromPublisher() {
+  string isbn, id = owner->getId();
+  int quantity;
+
+  view.clearScreen();
+  view.printStr("Enter the ISBN of the book you want to order: ");
+  view.readStr(isbn);
+  view.printStr("Enter the quantity you'd like to order: ");
+  view.readInt(quantity);
+
+  db->orderFromPublisher(id, isbn, quantity);
+
+  view.printStr("Your order has been placed.\n");
+  view.printStr("Enter any key to continue.");
+  view.readStr(isbn);
+}
+
 
 void Control::launch() {
   int choice, owner;
