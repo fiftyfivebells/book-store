@@ -41,3 +41,25 @@ create or replace function book_author(search_term varchar)
 $$
 language sql stable;
 
+create or replace function sales_report(start_date date, end_date date)
+  returns numeric as $$
+    select sum(amount * ((100 - percent_to_publisher) / 100)) from
+      (select amount, percent_to_publisher from book_order, order_contains, book
+       where book.isbn = order_contains.isbn
+         and book_order.order_number = order_contains.order_number
+         and order_date >= start_date
+         and order_date <= end_date) as t1
+$$
+language sql stable;
+
+create or replace function expense_report(start_date date, end_date date)
+  returns numeric as $$
+    select sum(t_cost * quantity) from
+	    (select order_date, orders_books.quantity, (price * .5) as t_cost
+        from orders_books, book
+        where orders_books.isbn = book.isbn
+        and order_date >= start_date
+        and order_date <= end_date) as t1
+$$
+language sql stable;
+
