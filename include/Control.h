@@ -4,6 +4,7 @@
 #include "Cart.h"
 #include "Customer.h"
 #include "Database.h"
+#include "Owner.h"
 #include "View.h"
 
 class Control {
