@@ -25,17 +25,18 @@ void View::selectMenu(int &choice) {
 }
 
 void View::displayLogInOrRegister(int &choice, int &owner) {
-  cout << endl << endl;
+  clearScreen();
   cout << "Select an option: " << endl;
   cout << "  (1) Login (if existing user)" << endl;
-  cout << "  (2) Register (if new user)" << endl;
-  cout << "  (0) Quit" << endl;
+  if (owner == 1)
+    cout << "  (2) Register (if new user)" << endl;
+  cout << "  (0) Quit" << endl << endl;
 
-  cout << "Enter your selection: " << endl;
+  cout << "Enter your selection: ";
   cin >> choice;
   if (choice == 0) return;
 
-  while (choice < 0 || choice < 2) {
+  while (choice < 0 || choice > 2) {
     cout << "Enter your selection: ";
     cin >> choice;
   }
