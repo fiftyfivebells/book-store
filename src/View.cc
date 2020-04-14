@@ -100,8 +100,7 @@ void View::bookSearchMenu(int &choice) {
 void View::readLine(string &str) {
   getline(cin, str);
 
-  while (str.length() == 0)
-    getline(cin, str);
+  while (str.length() == 0) getline(cin, str);
 }
 
 void View::printStr(string str) { cout << str; }
