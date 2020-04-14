@@ -1,4 +1,5 @@
 #include "../include/Control.h"
+#include <bits/stdc++.h>
 #include <iostream>
 #include <string>
 
