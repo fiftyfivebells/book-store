@@ -32,6 +32,10 @@ class Database {
   void getOwner(string &, Owner **);
   result getCustomerOrderHistory(Customer *);
   result trackCustomerOrders(Customer *);
+  result annualExpenses(string &);
+  result annualSales(string &);
+  result customExpenses(string &, string &);
+  result customSales(string &, string &);
   void orderFromPublisher(string &, string &, int &);
 
  private:

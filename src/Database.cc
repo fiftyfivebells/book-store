@@ -192,6 +192,17 @@ string Database::getUserPass(string &email) {
   return r[0][0].as<string>();
 }
 
+string Database::getOwnerPass(string &name) {
+  nontransaction n(*conn);
+  result r;
+  string query =
+      "select password from owner where first_name = '" + name + "';";
+
+  r = result(n.exec(query));
+
+  return r[0][0].as<string>();
+  return "";
+}
 
 void Database::getCustomer(string &email, Customer **c, Address **ship,
                            Address **bill) {
@@ -242,6 +253,33 @@ result Database::trackCustomerOrders(Customer *c) {
   nontransaction n(*conn);
 
   return r;
+}
+
+result Database::customExpenses(string &start, string &end) {
+  nontransaction n(*conn);
+  string query =
+      "select * from expense_report('" + start + "', '" + end + "');";
+  return result(n.exec(query));
+}
+
+result Database::customSales(string &start, string &end) {
+  nontransaction n(*conn);
+  string query = "select * from sales_report('" + start + "', '" + end + "');";
+  return result(n.exec(query));
+}
+
+result Database::annualSales(string &year) {
+  string start = year + "-01-01";
+  string end = year + "-12-31";
+
+  return customSales(start, end);
+}
+
+result Database::annualExpenses(string &year) {
+  string start = year + "-01-01";
+  string end = year + "-12-31";
+
+  return customExpenses(start, end);
 }
 
 void Database::orderFromPublisher(string &id, string &isbn, int &quantity) {
