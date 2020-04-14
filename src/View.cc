@@ -141,6 +141,9 @@ void View::showCart(Cart *cart) {
 
   if (cart->getItems().size() == 0) {
     cout << "Nothing in your cart." << endl;
+    printStr("Enter any key to continue. ");
+    string s;
+    readStr(s);
     return;
   }
 
