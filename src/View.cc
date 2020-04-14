@@ -171,3 +171,22 @@ void View::displayCartOps(int &choice) {
     cin >> choice;
   }
 }
+
+void View::displayReportsOptions(int &choice) {
+  clearScreen();
+  cout << "What would you like to do?" << endl;
+  cout << "  (1) Expense reports" << endl;
+  cout << "  (2) Sales reports" << endl;
+  cout << "  (0) Back to previous " << endl << endl;
+  cout << "Enter your selection: ";
+
+  cin >> choice;
+
+  if (choice == 0) return;
+
+  while (choice < 0 || choice > 2) {
+    cout << "Enter your selection: " << endl;
+    cin >> choice;
+  }
+}
+
