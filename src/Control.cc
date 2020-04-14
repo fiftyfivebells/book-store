@@ -150,6 +150,29 @@ void Control::logInUser(Customer **c) {
   (*c)->setShipping(shipping);
 }
 
+void Control::logInOwner(Owner **o) {
+  string first;
+  string pass;
+  string actualPass;
+
+  view.clearScreen();
+  view.printStr("Enter your name: ");
+  view.readStr(first);
+  actualPass = db->getOwnerPass(first);
+
+  do {
+    view.printStr("Enter your password (or enter 0 to quit): ");
+    view.readStr(pass);
+
+    if (pass == "0") break;
+    if (pass != actualPass) view.printStr("Password was incorrect.\n");
+  } while (pass != actualPass && pass != "0");
+
+  if (pass == "0") return;
+  db->getOwner(first, o);
+  view.printStr("Enter any key to continue. ");
+  view.readStr(first);
+}
 
 void Control::registerUser(Customer **c) {
   string option;
