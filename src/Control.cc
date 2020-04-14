@@ -300,8 +300,8 @@ void Control::runReports() {
 void Control::launch() {
   int choice, owns;
 
-  view.selectMenu(owner);
-  if (owner == 0) return;
+  view.selectMenu(owns);
+  if (owns == 0) return;
 
   while (1) {
     if (owns == 1) {
