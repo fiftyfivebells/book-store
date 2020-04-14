@@ -254,6 +254,48 @@ void Control::orderFromPublisher() {
   view.readStr(isbn);
 }
 
+void Control::runReports() {
+  int menuChoice;
+  string start;
+  string end;
+  result r;
+
+  view.clearScreen();
+  view.displayReportsOptions(menuChoice);
+
+  view.printStr(
+      "Enter the start date of your report in the form year-month-day (ie. "
+      "2020-01-01) or enter only the year if running an annual report: ");
+  view.readStr(start);
+
+  view.printStr(
+      "\nEnter the end date of your report in the form year-month-day (ie. "
+      "2020-01-31) or enter \"\" if running an annual report: ");
+  view.readStr(end);
+
+  if (menuChoice == 1) {
+    if (end.length() == 2)
+      r = db->annualExpenses(start);
+    else
+      r = db->customExpenses(start, end);
+  } else {
+    if (end.length() == 2) {
+      r = db->annualSales(start);
+    } else
+      r = db->customSales(start, end);
+  }
+
+  float amount = roundf(r[0][0].as<float>() * 100) / 100;
+
+  if (menuChoice == 1)
+    view.printStr("\nYour total expenses for the time period are $" +
+                  to_string(amount));
+  if (menuChoice == 2)
+    view.printStr("\nYour total sales for the time period are $" +
+                  to_string(amount));
+  view.printStr("\nEnter any key to continue ");
+  view.readStr(start);
+}
 
 void Control::launch() {
   int choice, owner;
