@@ -3,9 +3,9 @@
 CartItem::CartItem(string isbn, string title, int quantity, float price,
                    int toPublisher)
     : isbn(isbn),
-      quantity(quantity),
       title(title),
       price(price),
+      quantity(quantity),
       toPublisher(toPublisher) {}
 
 void CartItem::addAuthor(string author) { authors.push_back(author); }
