@@ -4,9 +4,11 @@
 
 using namespace std;
 
-Control::Control() noexcept
-    : cart(),
-      db("3005 project", "stephen", "supersecret", "127.0.0.1", "5432") {}
+Control::Control(Database *db) noexcept
+    : db(db) {
+  user = NULL;
+  owner = NULL;
+}
 
 Control::~Control() {}
 

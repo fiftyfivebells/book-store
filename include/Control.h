@@ -8,7 +8,7 @@
 
 class Control {
  public:
-  Control() noexcept;
+  Control(Database *) noexcept;
   ~Control();
   void launch();
   void bookShopping();
