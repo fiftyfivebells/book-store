@@ -27,7 +27,11 @@ class Database {
   result queryBookGenre(string &);
   bool makeBookOrder(Cart *, Address *, Customer *);
   void addCustomer(Customer *, Address *, Address *);
+  string getUserPass(string &);
+  void getCustomer(string &, Customer **, Address **, Address **);
   void getOwner(string &, Owner **);
+  result getCustomerOrderHistory(Customer *);
+  result trackCustomerOrders(Customer *);
   void orderFromPublisher(string &, string &, int &);
 
  private:

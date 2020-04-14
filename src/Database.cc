@@ -181,6 +181,69 @@ void Database::addAddress(string email, string type, Address *a) {
   n.abort();
 }
 
+string Database::getUserPass(string &email) {
+  nontransaction n(*conn);
+
+  string query = "select password from customer where email_address = '";
+  query += email + "';";
+
+  result r = result(n.exec(query));
+
+  return r[0][0].as<string>();
+}
+
+
+void Database::getCustomer(string &email, Customer **c, Address **ship,
+                           Address **bill) {
+  nontransaction n(*conn);
+  result r;
+  string query =
+      "select * from customer where email_address = '" + email + "';";
+
+  r = result(n.exec(query));
+
+  *c = new Customer(r[0][1].as<string>(), r[0][2].as<string>(),
+                    r[0][0].as<string>(), r[0][3].as<string>());
+
+  n.abort();
+  getAddress(email, "shipping", ship);
+  getAddress(email, "billing", bill);
+}
+
+
+void Database::getAddress(string email, string type, Address **a) {
+  result r;
+  nontransaction n(*conn);
+  string query =
+      "select * from customer_address where customer_email = '" + email + "' ";
+  query += " and address_type = '" + type + "';";
+  r = result(n.exec(query));
+  *a = new Address(r[0][2].as<string>(), r[0][3].as<string>(),
+                   r[0][4].as<string>(), r[0][5].as<string>(),
+                   r[0][6].as<string>(), r[0][7].as<string>());
+
+  n.abort();
+}
+
+result Database::getCustomerOrderHistory(Customer *c) {
+  nontransaction n(*conn);
+  string query =
+      "select * from customer_book_order, book_order where "
+      "customer_book_order.order_number = book_order.order_number and status "
+      "<> 'delivered' and "
+      "customer_email = '" +
+      c->getEmail() + "';";
+
+  return result(n.exec(query));
+}
+
+result Database::trackCustomerOrders(Customer *c) {
+  result r;
+  nontransaction n(*conn);
+
+  return r;
+}
+
 void Database::orderFromPublisher(string &id, string &isbn, int &quantity) {
   string email = getPublisher(isbn);
   nontransaction n(*conn);
