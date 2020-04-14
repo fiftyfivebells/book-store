@@ -16,7 +16,7 @@ class Cart;
 
 class Database {
  public:
-  Database(string, string, string, string, string);
+  Database();
   ~Database();
   result executeQuery(string &);
   result queryBookAuthor(string &);
