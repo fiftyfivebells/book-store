@@ -26,16 +26,17 @@ class Database {
   result queryBookPublisher(string &);
   result queryBookGenre(string &);
   bool makeBookOrder(Cart *, Address *, Customer *);
-  bool updateBookQuantity(string, int);
-  void createBookOrderItem(string &, CartItem *);
-  void createCustomerOrder(string &, string &);
   void addCustomer(Customer *, Address *, Address *);
-  void addAddress(string, string, Address *);
   void getOwner(string &, Owner **);
   void orderFromPublisher(string &, string &, int &);
 
  private:
   connection *conn;
+  bool updateBookQuantity(string, int);
+  void createCustomerOrder(string &, string &);
+  void createBookOrderItem(string &, CartItem *);
+  void addAddress(string, string, Address *);
+  void getAddress(string, string, Address **);
   string getPublisher(string &);
 };
 
