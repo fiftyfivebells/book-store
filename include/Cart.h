@@ -15,8 +15,9 @@ class Cart {
  public:
   ~Cart();
   void emptyCart();
+  bool isEmpty();
   void addItem(CartItem *);
-  void purchaseCart(Database *, Address *);
+  void purchaseCart(Database *, Address *, Customer *);
   float calculatePurchase();
   deque<CartItem *> getItems();
 

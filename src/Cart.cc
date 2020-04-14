@@ -11,6 +11,8 @@ void Cart::addItem(CartItem *item) { items.push_front(item); }
 void Cart::emptyCart() { items.clear(); }
 
 void Cart::purchaseCart(Database *db, Address *a) { db->makeBookOrder(this, a); }
+bool Cart::isEmpty() { return items.size() == 0; }
+
 
 float Cart::calculatePurchase() {
   float amount = 0;
