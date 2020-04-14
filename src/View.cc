@@ -7,7 +7,7 @@
 using namespace std;
 
 void View::selectMenu(int &choice) {
-  cout << endl << endl;
+  clearScreen();
   cout << "Are you a customer or an owner? Select below: " << endl;
   cout << "  (1) Customer" << endl;
   cout << "  (2) Owner" << endl;
@@ -61,7 +61,7 @@ void View::showCustomerMenu(int &choice) {
 }
 
 void View::showOwnerMenu(int &choice) {
-  cout << endl << endl;
+  clearScreen();
   cout << "Select an option: " << endl;
   cout << "  (1) Run reports" << endl;
   cout << "  (2) Order books" << endl;
