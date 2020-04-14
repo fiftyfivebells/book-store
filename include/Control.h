@@ -26,8 +26,17 @@ class Control {
   void completePurchase();
   void emptyCart();
   void logInUser(Customer **);
+  void logInOwner(Owner **);
   void registerUser(Customer **);
   void createAddress(Address **);
+  void showAccountOperations();
+  void getCustomerHistory();
+  void trackCustomerOrders();
+  void runReports();
+  void orderFromPublisher();
+  void createExpense();
+  void annualReports();
+  void customReports();
 };
 
 #endif
