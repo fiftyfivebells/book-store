@@ -298,7 +298,7 @@ void Control::runReports() {
 }
 
 void Control::launch() {
-  int choice, owner;
+  int choice, owns;
 
   view.selectMenu(owner);
   if (owner == 0) return;
