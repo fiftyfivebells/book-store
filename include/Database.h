@@ -18,6 +18,8 @@ class Database {
  public:
   Database();
   ~Database();
+  void setConnection(string, string, string, string, string);
+  void closeConnection();
   result executeQuery(string &);
   result queryBookAuthor(string &);
   result queryBookTitle(string &);
