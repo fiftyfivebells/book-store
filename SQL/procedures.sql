@@ -10,12 +10,21 @@ end;
 $$
 language plpgsql;
 
-create or replace function update_book_quantities() returns trigger as
-$body$
+create or replace function replenish_book_stock() returns trigger as
+$restock_books$
+declare
+  pub_email varchar;
 begin
-
-
+  if new.quantity < 10 then
+    pub_email := (select email_address from publishes where isbn = old.isbn);
+    insert into orders_books (email_address, isbn, quantity) values
+      (pub_email, old.isbn, 10);
+    update book set quantity = quantity + 10 where isbn = new.isbn;
+  end if;
+  return new;
 end;
+$restock_books$
+language plpgsql;
 
 create or replace function book_title(search_term varchar)
   returns table(isbn varchar, title varchar, quantity numeric, price numeric) as $$
