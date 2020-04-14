@@ -124,7 +124,7 @@ create table orders_books
    isbn   varchar(20) not null,
    order_date   date not null default current_date,
    quantity   numeric(4, 0) not null,
-   primary key (owner_id),
+   primary key (owner_id, email_address, isbn, order_date),
    foreign key (owner_id) references owner
     on delete set null,
    foreign key (isbn, email_address) references publishes
