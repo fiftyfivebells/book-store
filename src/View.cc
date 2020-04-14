@@ -147,7 +147,6 @@ void View::showCart(Cart *cart) {
     return;
   }
 
-  for (int i = 0; i < cart->getItems().size(); ++i) {
   for (unsigned long int i = 0; i < cart->getItems().size(); ++i) {
     cout << "Item " << (i + 1) << ": ";
     displayBook(cart->getItems()[i]);
@@ -155,12 +154,13 @@ void View::showCart(Cart *cart) {
 }
 
 void View::displayCartOps(int &choice) {
+  clearScreen();
   cout << "What would you like to do?" << endl;
   cout << "  (1) View shopping cart" << endl;
   cout << "  (2) Purchase shopping cart" << endl;
   cout << "  (3) Empty cart" << endl;
-  cout << "  (0) Back to previous " << endl;
-  cout << "Enter your selection: " << endl;
+  cout << "  (0) Back to previous " << endl << endl;
+  cout << "Enter your selection: ";
 
   cin >> choice;
 
