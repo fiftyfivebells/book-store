@@ -151,6 +151,41 @@ void Control::logInUser(Customer **c) {
 }
 
 
+void Control::registerUser(Customer **c) {
+  string option;
+  string first;
+  string last;
+  string pass;
+  string email;
+  Address *ship;
+  Address *bill;
+
+  view.clearScreen();
+  view.printStr("Enter your first name: ");
+  view.readStr(first);
+  view.printStr("Enter your last name: ");
+  view.readStr(last);
+  view.printStr("Enter your email: ");
+  view.readStr(email);
+  view.printStr("Enter a password: ");
+  view.readStr(pass);
+
+  *c = new Customer(first, last, email, pass);
+
+  view.printStr("Enter your shipping address: \n");
+  createAddress(&ship);
+  view.printStr("Is your billing address the same? (y or n)");
+  view.readStr(option);
+
+  if (option == "y")
+    bill = new Address(*ship);
+  else
+    createAddress(&bill);
+
+  db->addCustomer(*c, ship, bill);
+}
+
+
 void Control::launch() {
   int choice, owner;
 
