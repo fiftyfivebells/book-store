@@ -6,8 +6,7 @@
 
 using namespace std;
 
-Control::Control(Database *db) noexcept
-    : db(db) {
+Control::Control(Database *db) noexcept : db(db) {
   user = NULL;
   owner = NULL;
 }
