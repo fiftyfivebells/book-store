@@ -27,24 +27,24 @@ $restock_books$
 language plpgsql;
 
 create or replace function book_title(search_term varchar)
-  returns table(isbn varchar, title varchar, quantity numeric, price numeric) as $$
-    select isb, title, quantity, price
+  returns table(isbn varchar, title varchar, quantity numeric, price numeric, pages numeric) as $$
+    select isbn, title, quantity, price, pages
     from book
     where title ilike ('%' || search_term || '%')
 $$
 language sql stable;
 
 create or replace function book_genre(search_term varchar)
-  returns table(isbn varchar, title varchar, quantity numeric, price numeric, genre varchar) as $$
-    select isbn, title, quantity, price, genre
+  returns table(isbn varchar, title varchar, quantity numeric, price numeric, genre varchar, pages numeric) as $$
+    select isbn, title, quantity, price, genre, pages
     from book natural join genre
     where genre ilike ('%' || search_term || '%')
 $$
 language sql stable;
 
 create or replace function book_author(search_term varchar)
-  returns table(isbn varchar, title varchar, quantity numeric, price numeric, author varchar) as $$
-    select isbn, title, quantity, price, author
+  returns table(isbn varchar, title varchar, quantity numeric, price numeric, author varchar, pages numeric) as $$
+    select isbn, title, quantity, price, author, pages
     from book natural join author
     where author ilike ('%' || search_term || '%')
 $$
