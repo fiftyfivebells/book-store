@@ -109,7 +109,7 @@ void Control::emptyCart() {
   cart.emptyCart();
   view.printStr("Your cart is now empty. Press any key to continue");
   string s;
-  view.readLine(s);
+  view.readStr(s);
 }
 
 void Control::createAddress(Address **a) {
