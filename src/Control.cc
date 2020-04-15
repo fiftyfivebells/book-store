@@ -227,8 +227,7 @@ void Control::showAccountOperations() {
     view.displayAccountOptions(menuChoice);
 
     if (menuChoice == 0) break;
-    if (menuChoice == 1) getCustomerHistory();
-    if (menuChoice == 2) trackCustomerOrders();
+    getCustomerHistory(menuChoice);
   }
 }
 
