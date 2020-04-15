@@ -141,7 +141,7 @@ create table misc_expenses
 create table spends
  (expense_id   uuid not null,
   owner_id   uuid not null,
-  primary key (expense_id),
+  primary key (expense_id, owner_id),
   foreign key (owner_id) references owner
    on delete set null,
   foreign key (expense_id) references misc_expenses
