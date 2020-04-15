@@ -14,12 +14,17 @@ create or replace function replenish_book_stock() returns trigger as
 $restock_books$
 declare
   pub_email varchar;
+  sales numeric;
 begin
   if new.quantity < 10 then
+    sales := (select sum(order_contains.quantity) from (book_order natural join order_contains), book
+             where book.isbn = order_contains.isbn
+             and order_contains.isbn = old.isbn
+             and order_date > current_date - integer '30');
     pub_email := (select email_address from publishes where isbn = old.isbn);
     insert into orders_books (email_address, isbn, quantity) values
-      (pub_email, old.isbn, 10);
-    update book set quantity = quantity + 10 where isbn = new.isbn;
+      (pub_email, old.isbn, sales);
+    update book set quantity = quantity + sales where isbn = new.isbn;
   end if;
   return new;
 end;
