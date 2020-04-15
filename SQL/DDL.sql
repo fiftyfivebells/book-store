@@ -120,8 +120,8 @@ create table order_contains
 
 create table orders_books
   (owner_id   uuid,
-   email_address   varchar(30) not null,
-   isbn   varchar(20) not null,
+   email_address   varchar(30),
+   isbn   varchar(20),
    order_date   date not null default current_date,
    quantity   numeric(4, 0) not null,
    foreign key (owner_id) references owner
