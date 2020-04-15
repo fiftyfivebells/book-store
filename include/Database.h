@@ -31,8 +31,7 @@ class Database {
   string getOwnerPass(string &);
   void getCustomer(string &, Customer **, Address **, Address **);
   void getOwner(string &, Owner **);
-  result getCustomerOrderHistory(Customer *);
-  result trackCustomerOrders(Customer *);
+  result getCustomerOrderHistory(Customer *, int &);
   result annualExpenses(string &);
   result annualSales(string &);
   result customExpenses(string &, string &);
