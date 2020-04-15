@@ -30,7 +30,7 @@ class Control {
   void registerUser(Customer **);
   void createAddress(Address **);
   void showAccountOperations();
-  void getCustomerHistory();
+  void getCustomerHistory(int &);
   void trackCustomerOrders();
   void runReports();
   void orderFromPublisher();
