@@ -88,9 +88,21 @@ void Control::showCartOperations() {
 }
 
 void Control::completePurchase() {
-  Address *a = new Address("100", "Willow Street", "", "Boston", "MA", "02102");
+  int menuChoice;
+  Address *a;
+  view.addressPrompt(menuChoice);
 
-  cart.purchaseCart(&db, a);
+  if (menuChoice == 0) return;
+  if (menuChoice == 1) {
+    a = user->getShipping();
+  }
+  if (menuChoice == 2) {
+    createAddress(&a);
+  }
+  if (cart.isEmpty()) return;
+  cart.purchaseCart(db, a, user);
+
+  if (menuChoice == 2) delete a;
 }
 
 void Control::emptyCart() {
