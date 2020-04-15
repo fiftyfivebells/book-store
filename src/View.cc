@@ -208,3 +208,21 @@ void View::displayReportsOptions(int &choice) {
   }
 }
 
+void View::addressPrompt(int &choice) {
+  clearScreen();
+  cout << "Would you like to use your saved address or input a new one?" << endl;
+  cout << "  (1) Current" << endl;
+  cout << "  (2) New" << endl;
+  cout << "  (0) Back to previous " << endl << endl;
+  cout << "Enter your selection: ";
+
+  cin >> choice;
+
+  if (choice == 0) return;
+
+  while (choice < 0 || choice > 2) {
+    cout << "Enter your selection: " << endl;
+    cin >> choice;
+  }
+}
+

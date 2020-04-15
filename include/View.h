@@ -27,6 +27,7 @@ class View {
   void displayReportsOptions(int &);
   void displayPublisherOrder(int &);
   void displayExpenseOptions(int &);
+  void addressPrompt(int &);
 };
 
 #endif
