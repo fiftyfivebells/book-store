@@ -34,7 +34,6 @@ class Control {
   void trackCustomerOrders();
   void runReports();
   void orderFromPublisher();
-  void createExpense();
   void annualReports();
   void customReports();
 };

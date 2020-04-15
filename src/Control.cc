@@ -339,7 +339,6 @@ void Control::launch() {
       if (choice == 0) break;
       if (choice == 1) runReports();
       if (choice == 2) orderFromPublisher();
-      if (choice == 3) createExpense();
     }
   }
 }
