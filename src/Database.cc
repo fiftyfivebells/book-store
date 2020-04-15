@@ -241,12 +241,14 @@ void Database::getAddress(string email, string type, Address **a) {
   n.abort();
 }
 
-result Database::getCustomerOrderHistory(Customer *c) {
+result Database::getCustomerOrderHistory(Customer *c, int &choice) {
   nontransaction n(*conn);
+  string status = (choice == 1) ? "<>" : "=";
+
   string query =
       "select * from customer_book_order, book_order where "
       "customer_book_order.order_number = book_order.order_number and status "
-      "<> 'delivered' and "
+      + status + "'delivered' and "
       "customer_email = '" +
       c->getEmail() + "';";
 
