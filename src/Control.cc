@@ -37,7 +37,9 @@ void Control::bookShopping() {
     if (menuChoice == 4) r = db->queryBookPublisher(searchTerm);
 
     for (auto row : r) {
-      cout << row[0].as<string>() << ": " + row[1].as<string>() << endl;
+      cout << row[0].as<string>() << ": " + row[1].as<string>() << ", "
+           << row[4].as<string>() << " pages, " << row[2].as<string>()
+           << " in stock, $" << row[3].as<string>() << endl;
     }
 
     while (1) {
