@@ -232,19 +232,22 @@ void Control::showAccountOperations() {
   }
 }
 
-void Control::getCustomerHistory() {
-  result r = db->getCustomerOrderHistory(user);
+void Control::getCustomerHistory(int &choice) {
+  result r = db->getCustomerOrderHistory(user, choice);
 
-  view.printStr("Orders: ");
-  for (auto row : r) {
-    view.printStr("Number: " + row[0].as<string>());
-    view.printStr("  Date: " + row[3].as<string>());
-    view.printStr("  Amount: " + row[4].as<string>());
-    view.printStr("  Status: " + row[11].as<string>());
-    view.printStr("  Location: " + row[12].as<string>());
-    view.printStr("\n");
+  if (r.size() == 0)
+    view.printStr("No orders to display.");
+  else {
+    view.printStr("Orders: ");
+    for (auto row : r) {
+      view.printStr("Number: " + row[0].as<string>());
+      view.printStr("  Date: " + row[3].as<string>());
+      view.printStr("  Amount: " + row[4].as<string>());
+      view.printStr("  Status: " + row[11].as<string>());
+      view.printStr("  Location: " + row[12].as<string>());
+      view.printStr("\n");
+    }
   }
-
   view.printStr("\n Enter any key to continue. ");
   string s;
   view.readStr(s);
