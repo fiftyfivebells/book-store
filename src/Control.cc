@@ -276,6 +276,8 @@ void Control::runReports() {
   view.clearScreen();
   view.displayReportsOptions(menuChoice);
 
+  if (menuChoice == 0) return;
+
   view.printStr(
       "Enter the start date of your report in the form year-month-day (ie. "
       "2020-01-01) or enter only the year if running an annual report: ");
