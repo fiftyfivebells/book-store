@@ -253,13 +253,6 @@ result Database::getCustomerOrderHistory(Customer *c) {
   return result(n.exec(query));
 }
 
-result Database::trackCustomerOrders(Customer *c) {
-  result r;
-  nontransaction n(*conn);
-
-  return r;
-}
-
 result Database::customExpenses(string &start, string &end) {
   nontransaction n(*conn);
   string query =
