@@ -225,4 +225,3 @@ void View::addressPrompt(int &choice) {
     cin >> choice;
   }
 }
-
