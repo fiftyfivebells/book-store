@@ -66,7 +66,7 @@ void Control::addToCart() {
 
   query = "select * from book natural right outer join author where isbn = '" +
           isbn + "';";
-  r = db.executeQuery(query);
+  r = db->executeQuery(query);
   CartItem *temp = new CartItem(isbn, r[0][1].as<string>(), quantity,
                                 r[0][5].as<float>(), r[0][6].as<int>());
 
